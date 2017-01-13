@@ -11,13 +11,22 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
+    /**
+     * Constants
+     */
     private static final String TAG = "QuizActivity";
+    private static final String KEY_INDEX = "index";
 
+    /**
+     * Instance variables
+     */
     private Button mTrueButton;
     private Button mFalseButton;
     private ImageButton mNextButton;
     private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
+
+    private int mCurrentIndex = 0;
 
     /**
      * Calling the Question constructor to create
@@ -30,8 +39,6 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_americas, true),
             new Question(R.string.question_asia, true),
     };
-
-    private int mCurrentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,22 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        // Setting OnClick Listener for True/False Buttons
+        mTrueButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                checkAnswer(true);
+            }
+        });
+
+        mFalseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkAnswer(false);
+            }
+        });
+
         // Setting OnClick Listeners for Next/Previous Buttons
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,23 +103,18 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
         updateQuestion();
+    }
 
-        // Setting OnClick Listener for True/False Buttons
-        mTrueButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                checkAnswer(true);
-            }
-        });
-
-        mFalseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkAnswer(false);
-            }
-        });
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "savedInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
     @Override
