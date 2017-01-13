@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -21,16 +22,29 @@ public class QuizActivity extends AppCompatActivity {
 
         // Setting OnClick Listener for True/False Buttons
         mTrueButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
-
+                /**
+                 * @param context Typically an instance of Activity
+                 * @param resID String that the Toast should display
+                 * @param duration Constant to specify how long the Toast should be visible
+                 */
+                Toast.makeText(QuizActivity.this,
+                        R.string.incorrect_toast,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Toast.makeText(QuizActivity.this,
+                        R.string.correct_toast,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
