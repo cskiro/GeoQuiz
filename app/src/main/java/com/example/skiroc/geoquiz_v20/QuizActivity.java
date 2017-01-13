@@ -12,8 +12,8 @@ public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mPreviousButton;
     private TextView mQuestionTextView;
-    private int mQuestion;
 
     /**
      * Calling the Question constructor to create
@@ -38,6 +38,7 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
         mNextButton = (Button) findViewById(R.id.next_button);
+        mPreviousButton = (Button) findViewById(R.id.previous_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         // Setting OnClick Listener for Question TextView
@@ -50,12 +51,21 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        // Setting OnClick Listener for Next Button
+        // Setting OnClick Listeners for Next/Previous Buttons
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Incrementing index
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
+        mPreviousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Decrementing index
+                mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
                 updateQuestion();
             }
         });
