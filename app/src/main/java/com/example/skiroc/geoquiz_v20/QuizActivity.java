@@ -2,6 +2,7 @@ package com.example.skiroc.geoquiz_v20;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
+
+    private static final String TAG = "QuizActivity";
 
     private Button mTrueButton;
     private Button mFalseButton;
@@ -33,6 +36,12 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /**
+         * Sending log message to system logs
+         * @param tag (String)
+         * @param message (String)
+         */
+        Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_quiz);
 
         // Getting references to Widgets
