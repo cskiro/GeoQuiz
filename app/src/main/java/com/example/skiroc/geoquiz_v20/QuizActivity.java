@@ -13,6 +13,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private TextView mQuestionTextView;
+    private int mQuestion;
 
     /**
      * Calling the Question constructor to create
@@ -28,6 +29,15 @@ public class QuizActivity extends AppCompatActivity {
 
     private int mCurrentIndex = 0;
 
+    /**
+     * Sets Question TextView text to current question
+     * Updates TextView's text
+     */
+    private void updateQuestion() {
+        int question = mQuestionBank[mCurrentIndex].getTextResId();
+        mQuestionTextView.setText(question);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +46,24 @@ public class QuizActivity extends AppCompatActivity {
         // Getting references to Widgets
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
+        mNextButton = (Button) findViewById(R.id.next_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
-        // Setting Question TextView text to current question
-        int question = mQuestionBank[mCurrentIndex].getTextResId();
-        mQuestionTextView.setText(question);
+        // Setting OnClick Listener for Next Button
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Incrementing index
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
+        updateQuestion();
 
         // Setting OnClick Listener for True/False Buttons
         mTrueButton.setOnClickListener(new View.OnClickListener() {
-            /**
-             *
-             * @param view
-             */
+
             @Override
             public void onClick(View view) {
                 /**
