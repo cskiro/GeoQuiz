@@ -2,6 +2,9 @@
     <!-- Application Name -->
     <string name="app_name">GeoQuiz</string>
 
+    <!-- Menu -->
+    <string name="action_settings">Settings</string>
+
     <!-- Buttons -->
     <string name="false_button">False</string>
     <string name="true_button">True</string>
