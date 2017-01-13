@@ -40,6 +40,16 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton = (Button) findViewById(R.id.next_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
+        // Setting OnClick Listener for Question TextView
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Incrementing index
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
         // Setting OnClick Listener for Next Button
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
