@@ -1,5 +1,6 @@
 package com.example.skiroc.geoquiz_v20;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ public class QuizActivity extends AppCompatActivity {
      */
     private Button mTrueButton;
     private Button mFalseButton;
+    private Button mCheatButton;
     private ImageButton mNextButton;
     private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
@@ -58,6 +60,7 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton = (Button) findViewById(R.id.false_button);
         mNextButton = (ImageButton) findViewById(R.id.next_button);
         mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
+        mCheatButton = (Button) findViewById(R.id.cheat_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         // Setting OnClick Listener for Question TextView
@@ -102,6 +105,20 @@ public class QuizActivity extends AppCompatActivity {
                 // Decrementing index
                 mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
                 updateQuestion();
+            }
+        });
+
+        // Setting OnClick Listener for Cheat Button
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /**
+                 * Start CheatActivity
+                 * @param context Tells the ActivityManager which app package the activity class can be found in
+                 * @param class Specifies the activity class that the ActivityManager should start
+                 */
+                Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
+                startActivity(intent);
             }
         });
 
