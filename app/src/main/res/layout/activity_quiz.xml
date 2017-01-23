@@ -64,5 +64,14 @@
                 android:src="@drawable/arrow_right" />
 
         </LinearLayout>
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/build_version_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lorem impsum dolor"
+        android:padding="8dp" />
+
 </LinearLayout>

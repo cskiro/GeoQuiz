@@ -2,6 +2,7 @@ package com.example.skiroc.geoquiz_v20;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class QuizActivity extends AppCompatActivity {
     private ImageButton mNextButton;
     private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
+    private TextView mBuildVersionTextView;
 
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
@@ -65,6 +67,13 @@ public class QuizActivity extends AppCompatActivity {
         mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
         mCheatButton = (Button) findViewById(R.id.cheat_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        mBuildVersionTextView = (TextView) findViewById(R.id.build_version_text_view);
+
+        /**
+         * Challenge: Report the user's API level that the device is running
+         */
+        int apiLevel = Build.VERSION.SDK_INT;
+        mBuildVersionTextView.setText("API Level " + apiLevel);
 
         // Setting OnClick Listener for Question TextView
         mQuestionTextView.setOnClickListener(new View.OnClickListener() {
