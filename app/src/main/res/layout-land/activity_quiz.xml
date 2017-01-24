@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_quiz"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.skiroc.geoquiz_v20.QuizActivity">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:id="@+id/activity_quiz"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.example.skiroc.geoquiz_v20.QuizActivity">
 
     <TextView
         android:id="@+id/question_text_view"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="24dp"
-        tools:text="Lorum ipsum dolor sit amet" />
+        tools:text="Lorum ipsum dolor sit amet"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,13 +24,13 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/true_button" />
+            android:text="@string/true_button"/>
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/false_button" />
+            android:text="@string/false_button"/>
 
     </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:text="@string/cheat_button" />
+            android:text="@string/cheat_button"/>
 
     </LinearLayout>
 
@@ -60,13 +60,22 @@
             android:id="@+id/previous_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_left" />
+            android:src="@drawable/arrow_left"/>
 
         <ImageButton
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right" />
+            android:src="@drawable/arrow_right"/>
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/build_version_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp"
+        tools:text="Lorem ipsum dolor"/>
 
 </FrameLayout>
